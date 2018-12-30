@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<h1 id="num" ></h1>
+
+<!--<div className='backImg5' >-->
+  <!--{/*<IndexMapPanel/>*/}-->
+  <!--{/*<CountUp delay={2} end={100} />*/}-->
+  <!--{/*<CountUp start={0} end={5555} delay={0}>*/}-->
+  <!--{/*{({ countUpRef }) => (*/}-->
+  <!--{/*<div>*/}-->
+    <!--{/*<span ref={countUpRef} />*/}-->
+    <!--{/*</div>*/}-->
+  <!--{/*)}*/}-->
+  <!--{/*</CountUp>*/}-->
+  <!--{/*<CountUp start={0} end={100}>*/}-->
+  <!--{/*{({ countUpRef, start }) =>{*/}-->
+  <!--{/*console.log(countUpRef,"...................////");*/}-->
+  <!--{/*return (*/}-->
+  <!--{/*<div>*/}-->
+    <!--{/*<span ref={countUpRef} />*/}-->
+    <!--{/*<button onClick={start}>Start</button>*/}-->
+    <!--{/*</div>*/}-->
+  <!--{/*)*/}-->
+
+  <!--{/*} }*/}-->
+  <!--{/*</CountUp>*/}-->
+
+  <!--<CountUp-->
+    <!--start={this.state.countnum}-->
+    <!--end={this.props.map.countUpNum?this.props.map.countUpNum:0}-->
+    <!--duration={2.75}-->
+    <!--separator=","-->
+  <!--//decimals={3}-->
+  <!--//decimal=","-->
+  <!--// prefix="EUR "-->
+  <!--// suffix=" left"-->
+  <!--&gt;-->
+
+  <!--</CountUp>-->
+<!--</div>-->
+
+</body>
+<script type="text/javascript">
+  var numBox = document.getElementById('num');
+  /**
+   * 数字滚动
+   * @param {Object} num 		开始值
+   * @param {Object} maxNum	最大值,最终展示的值
+   */
+  function numRunFun(num,maxNum){
+    var numText = num;
+    var golb; // 为了清除requestAnimationFrame
+    function numSlideFun(){
+      numText+=(maxNum/500); // 速度的计算可以为小数
+      if(numText >= maxNum){
+        numText = maxNum;
+        cancelAnimationFrame(golb);
+      }else {
+        golb = requestAnimationFrame(numSlideFun);
+      }
+      numBox.innerHTML = ~~(numText)
+
+    }
+    numSlideFun();
+  }
+  // 运行
+  numRunFun(0,256485)
+</script>
+
